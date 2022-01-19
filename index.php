@@ -16,11 +16,29 @@ Gestite eventuali eccezioni che si possono verificare /*(es: carta di credito sc
 require_once __DIR__. '/classes/Products.php';
 require_once __DIR__. '/classes/Utenti.php';
 require_once __DIR__. '/classes/UtentiPremium.php';
+require_once __DIR__. '/classes/CreditCard.php';
 
-$utente = new Utenti('giorgioverdi12@gmail.com', 'auto5v9', 'Giorgio', 'Verdi', 'c8fhnd');
-
-
+$utente = new Utenti('giorgioverdi12@gmail.com', 'auto5v9', 'Giorgio', 'Verdi');
+$utente -> sconto = 20;
 var_dump($utente);
+
+$product = new Products();
+$product -> tipo_abbigliamento = 't shirt';
+$product -> taglia = 'M';
+$product -> costo = 20;
+
+
+var_dump($product);
+
+try {
+  $cc = new CreditCard('eeeee', 'Giorgio', 427);
+} catch (\Exception $e) {
+  echo $e -> getMessage();
+}
+
+
+
+var_dump($cc);
 
 ?>
 
